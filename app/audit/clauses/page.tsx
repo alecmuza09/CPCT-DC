@@ -491,7 +491,7 @@ export default function ClausulasISOPage() {
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{evaluacionesProgramadas.filter(e => e.norma === normaSeleccionada).length}</div>
+            <div className="text-2xl font-bold">{evaluacionesProgramadas.filter((evaluacion)=>evaluacion.norma === normaSeleccion).length}</div>
             <p className="text-xs text-muted-foreground">programadas</p>
           </CardContent>
         </Card>
