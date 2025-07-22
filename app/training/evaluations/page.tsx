@@ -106,7 +106,7 @@ export default function EvaluacionesPage() {
   const [evaluacionSeleccionada, setEvaluacionSeleccionada] = useState(null);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
-  const evaluacionesFiltradas = evaluacionesData.filter(evaluacion => {
+  const evaluacionesFiltradas = evaluacionesData.filter((evaluacion) => {
     const matchEstado = filtroEstado === "todos" || evaluacion.estado === filtroEstado;
     const matchCurso = filtroCurso === "todos" || evaluacion.curso === filtroCurso;
     const matchBusqueda = evaluacion.empleado.toLowerCase().includes(busqueda.toLowerCase()) ||
@@ -164,7 +164,7 @@ export default function EvaluacionesPage() {
             <CheckCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{evaluacionesData.filter(e => e.estado === "Aprobado").length}</div>
+            <div className="text-2xl font-bold">{evaluacionesData.filter((e) => e.estado === "Aprobado").length}</div>
           </CardContent>
         </Card>
         <Card>
@@ -182,7 +182,7 @@ export default function EvaluacionesPage() {
             <Star className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{Math.round((evaluacionesData.filter(e => e.estado === "Aprobado").length / evaluacionesData.length) * 100)}%</div>
+            <div className="text-2xl font-bold">{Math.round((evaluacionesData.filter((e) => e.estado === "Aprobado").length / evaluacionesData.length) * 100)}%</div>
           </CardContent>
         </Card>
       </div>
@@ -395,7 +395,7 @@ export default function EvaluacionesPage() {
               <CardContent>
                 <div className="space-y-4">
                   {["Introducción a ISO 9001", "Gestión de Riesgos", "Procedimientos de Limpieza"].map((curso) => {
-                    const evaluacionesCurso = evaluacionesData.filter(e => e.curso === curso);
+                    const evaluacionesCurso = evaluacionesData.filter((e) => e.curso === curso);
                     const promedio = evaluacionesCurso.length > 0 
                       ? Math.round(evaluacionesCurso.reduce((acc, e) => acc + e.puntuacion, 0) / evaluacionesCurso.length)
                       : 0;
@@ -422,25 +422,25 @@ export default function EvaluacionesPage() {
                   <div className="flex justify-between items-center">
                     <span>90-100% (Excelente)</span>
                     <Badge variant="default" className="bg-green-500">
-                      {evaluacionesData.filter(e => e.puntuacion >= 90).length}
+                      {evaluacionesData.filter((e) => e.puntuacion >= 90).length}
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span>80-89% (Bueno)</span>
                     <Badge variant="default" className="bg-blue-500">
-                      {evaluacionesData.filter(e => e.puntuacion >= 80 && e.puntuacion < 90).length}
+                      {evaluacionesData.filter((e) => e.puntuacion >= 80 && e.puntuacion < 90).length}
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span>70-79% (Regular)</span>
                     <Badge variant="outline">
-                      {evaluacionesData.filter(e => e.puntuacion >= 70 && e.puntuacion < 80).length}
+                      {evaluacionesData.filter((e) => e.puntuacion >= 70 && e.puntuacion < 80).length}
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span>< 70% (Deficiente)</span>
+                    <span>&lt; 70% (Deficiente)</span>
                     <Badge variant="destructive">
-                      {evaluacionesData.filter(e => e.puntuacion < 70).length}
+                      {evaluacionesData.filter((e) => e.puntuacion < 70).length}
                     </Badge>
                   </div>
                 </div>
@@ -507,4 +507,4 @@ export default function EvaluacionesPage() {
       </Dialog>
     </div>
   );
-} 
+}
