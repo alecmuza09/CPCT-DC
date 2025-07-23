@@ -100,11 +100,11 @@ const plantillasEvaluacion = [
 ];
 
 export default function EvaluacionesPage() {
-  const [filtroEstado, setFiltroEstado] = useState("todos");
-  const [filtroCurso, setFiltroCurso] = useState("todos");
-  const [busqueda, setBusqueda] = useState("");
-  const [evaluacionSeleccionada, setEvaluacionSeleccionada] = useState(null);
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [filtroEstado, setFiltroEstado] = useState<string>("todos");
+  const [filtroCurso, setFiltroCurso] = useState<string>("todos");
+  const [busqueda, setBusqueda] = useState<string>("");
+  const [evaluacionSeleccionada, setEvaluacionSeleccionada] = useState<any>(null);
+  const [mostrarFormulario, setMostrarFormulario] = useState<boolean>(false);
 
   const evaluacionesFiltradas = evaluacionesData.filter((evaluacion) => {
     const matchEstado = filtroEstado === "todos" || evaluacion.estado === filtroEstado;
@@ -114,7 +114,7 @@ export default function EvaluacionesPage() {
     return matchEstado && matchCurso && matchBusqueda;
   });
 
-  const getEstadoBadge = (estado, puntuacion) => {
+  const getEstadoBadge = (estado: string, puntuacion: number) => {
     switch (estado) {
       case "Aprobado":
         return <Badge variant="default" className="bg-green-500"><CheckCircle className="mr-1 h-3 w-3" />Aprobado</Badge>;
@@ -127,7 +127,7 @@ export default function EvaluacionesPage() {
     }
   };
 
-  const getPuntuacionColor = (puntuacion) => {
+  const getPuntuacionColor = (puntuacion: number): string => {
     if (puntuacion >= 80) return "text-green-600";
     if (puntuacion >= 70) return "text-yellow-600";
     return "text-red-600";
