@@ -13,6 +13,9 @@ const nextConfig = {
   trailingSlash: true,
   distDir: 'out',
   swcMinify: true,
+  experimental: {
+    esmExternals: false,
+  },
 }
 
 export default nextConfig
